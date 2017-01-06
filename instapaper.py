@@ -24,7 +24,7 @@ def authenticate(username, password):
     auth_payload = {'username': username,
                     'password': password}
     auth_request = requests.get(auth_url, params=auth_payload)
-    check_request_status(auth_request.text)
+    check_request_status(str(auth_request.status_code))
     if auth_request.text == '200':
         authenticated = True
         credentials = username, password
@@ -40,5 +40,5 @@ def add_urls(username,password,url):
                    'url': url}
     add_url = 'https://www.instapaper.com/api/add'
     add_request = requests.get(add_url, params=add_payload)
-    check_request_status(add_request.text)
+    check_request_status (str(add_request.status_code))
 
